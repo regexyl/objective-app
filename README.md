@@ -5,6 +5,8 @@ Create your objectives in 2 modes:
 
 This project is currently optimised for iOS devices only, specifically iPhone 12.
 
+Figma link: https://www.figma.com/file/wpNmK9IfFCJUKn4vg4RUxU/Objective-UI?node-id=0%3A1
+
 ## Getting started
 This is a standard [Expo](https://docs.expo.io/) project. 
 
