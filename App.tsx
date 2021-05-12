@@ -1,23 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { useFonts } from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
+import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    ...Colors
+  }
+};
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete) {
+  const [loaded] = useFonts({
+    'lato-regular': require('./assets/fonts/Lato-Regular.ttf'),
+    'lato-bold': require('./assets/fonts/Lato-Bold.ttf'),
+    'lato-black': require('./assets/fonts/Lato-Black.ttf'),
+  })
+
+  if (!isLoadingComplete || !loaded) {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
+      <PaperProvider theme={theme}>
+        <SafeAreaProvider>
+          <Navigation colorScheme={colorScheme}/>
+          <StatusBar />
+        </SafeAreaProvider>
+      </PaperProvider>
     );
   }
 }

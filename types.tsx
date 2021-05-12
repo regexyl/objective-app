@@ -9,14 +9,31 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Activity: undefined;
+  Home: undefined;
+  Profile: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type ActivityParamList = {
+  ActivityScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type HomeParamList = {
+  HomeScreen: undefined;
+  ObjectiveMainScreen: undefined;
+  Objective1Screen: undefined;
+  Objective2Screen: undefined;
+  Objective3Screen: undefined;
+  Objective4Screen: undefined;
+};
+
+export type ProfileParamList = {
+  ProfileScreen: undefined;
+  EditProfileScreen: undefined;
+  SettingsScreen: undefined;
+};
+
+export type AuthParamList = {
+  LoginScreen: undefined;
+  RegistrationScreen: undefined;
 };
