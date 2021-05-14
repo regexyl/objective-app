@@ -5,6 +5,7 @@ import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet} from 'react-
 import { TextInput } from 'react-native-paper';
 
 import SubObjective from '../../models/subObjective';
+
 import Colors from '../../constants/Colors';
 import TextDefault from '../../components/atomic/TextDefault';
 import TextBold from '../../components/atomic/TextBold';
@@ -14,7 +15,7 @@ import WarningCard from '../../components/Cards/WarningCard';
 import ButtonWhite from '../../components/Buttons/ButtonWhite';
 
 const Objective4Screen = ({navigation}: any) => {
-    const[subObjectives, setSubObjectives] = useState([]);
+    const[subObjectives, setSubObjectives] = useState<SubObjective[]>([]);
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -35,11 +36,11 @@ const Objective4Screen = ({navigation}: any) => {
                         <View style={styles.timelineImage}></View>
                         <View style={styles.titleContainer}>
                             <TextBold style={styles.timelineHeaderText}>Sub-Objective Title</TextBold>
-                            <TextInput
+                            {/* <TextInput
                                 style={styles.input}
                                 label="Your sub-objective"
                                 onChangeText={() => {}} 
-                                value={subObjectives} />
+                                value={subObjectives} /> */}
                         </View>
                         <View style={styles.deadlineContainer}>
                             <TextBold style={styles.timelineHeaderText}> Deadline</TextBold>

@@ -14,6 +14,28 @@ This is a standard [Expo](https://docs.expo.io/) project.
 You will need the [Expo CLI](https://docs.expo.io/workflow/expo-cli/) to run the app. To view the iOS app in a simulator, you need a Macbook installed with Xcode. View the guide [here](https://docs.expo.io/workflow/ios-simulator/).
 
 ### Setting up
+Create the Firebase config file:
+Go to `src` > `firebase` and create an empty config file `config.js`.
+
+Setup your [Google Firebase console](https://firebase.google.com/):
+1. Add a new project.
+2. After your project is done setting up, create a 'Web' app.
+3. Go to Settings > Project Settings > click on Config (on bottom of screen), then copy the Firebase configuration object.
+4. Paste the config in this repo in `src` > `firebase` > `config.js`. It should look like the following:
+
+```
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: XXXXXXXX,
+  authDomain: XXXXXXXX,
+  projectId: XXXXXXXX,
+  storageBucket: XXXXXXXX,
+  messagingSenderId: XXXXXXXX,
+  appId: XXXXXXXX,
+  measurementId: XXXXXXXX
+};
+```
+
 Install node modules:
 ```
 npm install

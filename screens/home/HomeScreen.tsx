@@ -1,7 +1,10 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import { Button } from 'react-native-paper';
+import firebase from 'firebase';
+import { doc, setDoc } from "firebase/firestore"; 
 import { Ionicons } from '@expo/vector-icons';
+import { TextInput } from 'react-native-paper'; // temporary
+import ButtonGradient from '../../components/Buttons/ButtonGradient';
 
 import Colors from '../../constants/Colors';
 import SwitchButton from '../../components/Buttons/SwitchButton';
@@ -13,9 +16,17 @@ const HomeScreen = ({navigation}: any) => {
     const [isSwitchOn, setIsSwitchOn] = React.useState(false);
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
+    const addToFirebase = () => {
+        // incomplete
+    }
+
     const placeholder = 
             <View style={styles.screenContent}>
                 <TextBold style={styles.header}>Your Objectives</TextBold>
+                <View style={styles.temporary}>
+                    <TextInput />
+                    <ButtonGradient onPress={addToFirebase} >Add to Firebase</ButtonGradient>
+                </View>
                 <View style={styles.placeholder}>
                     <Image style={styles.placeholderImage} source={require('../../assets/images/objective-mountain-transparent.png')} />
                     <TextDefault style={styles.placeholderText}>Add an objective!</TextDefault>
@@ -88,7 +99,11 @@ const styles = StyleSheet.create({
         fontSize: 26,
         marginTop: 18,
         color: Colors.whitishGray
-    }
+    },
+    temporary: {
+        height: 50,
+        width: 300
+    },
 });
 
 export default HomeScreen;

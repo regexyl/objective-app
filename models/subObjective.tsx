@@ -1,10 +1,11 @@
 class SubObjective {
-    subObjectiveTitle: string;
+    subTitle: string;
+    subDeadline: Date;
     
-    constructor(subObjectiveTitle: string) {
-        this.subObjectiveTitle = subObjectiveTitle;
+    constructor(subTitle: string, subDeadline: Date) {
+        this.subTitle = subTitle;
+        this.subDeadline = subDeadline;
     }
-
 }
 
 export default SubObjective;

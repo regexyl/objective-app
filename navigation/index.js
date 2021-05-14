@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import * as firebase from 'firebase';
 
 import Colors from '../constants/Colors';
-import firebaseConfig from '../config/firebaseConfig';
+import firebaseConfig from '../src/firebase/config';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegistrationScreen from '../screens/auth/RegistrationScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
@@ -24,11 +24,13 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig)
 }
 
+
 const Stack = createStackNavigator();
 
 export default function Navigation({ colorScheme }) {
   // })
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const db = firebase.firestore();
 
   firebase.auth().onAuthStateChanged((user) => {
       if (user) {

@@ -1,8 +1,9 @@
 class Objective {
     id: string;
+    user: string;
     type: string;
-    objectiveTitle: string;
-    objectiveDesc: string;
+    title: string;
+    description: string;
     roadmap: string[][];
     deadline: Date;
     foundPartner: boolean;
@@ -10,18 +11,20 @@ class Objective {
 
     constructor(
         id: string,
+        user: string,
         type: string,
-        objectiveTitle: string,
-        objectiveDesc: string,
+        title: string,
+        description: string,
         roadmap: string[][],
         deadline: Date,
         foundPartner: boolean,
         notifSchedule: string[]
     ) {
         this.id = id;
+        this.user = user;
         this.type = type;
-        this.objectiveTitle = objectiveTitle;
-        this.objectiveDesc = objectiveDesc;
+        this.title = title;
+        this.description = description;
         this.roadmap = roadmap;
         this.deadline = deadline;
         this.foundPartner = foundPartner;
