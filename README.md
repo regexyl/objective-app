@@ -17,14 +17,13 @@ You will need the [Expo CLI](https://docs.expo.io/workflow/expo-cli/) to run the
 1. Create the Firebase config file:
 Go to `src` > `firebase` and create an empty config file `config.js`.
 
-2. Setup your [Google Firebase console](https://firebase.google.com/):
-    1. Add a new project.
-    2. After your project is done setting up, create a 'Web' app.
-    3. Go to Settings > Project Settings > click on Config (on bottom of screen), then copy the Firebase configuration object.
-    4. Paste the config in this repo in `src` > `firebase` > `config.js`. It should look like the following:
-
+2. Paste the following into `config.js`:
 ```
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import firebase from 'firebase/app';
+import '@firebase/auth';
+import '@firebase/firestore';
+
+// Paste your Firebase config keys from Step 3 later here.
 const firebaseConfig = {
   apiKey: "API_KEY",
   authDomain: "PROJECT_ID.firebaseapp.com",
@@ -34,14 +33,21 @@ const firebaseConfig = {
   messagingSenderId: "SENDER_ID",
   appId: "APP_ID",
   measurementId: "G-MEASUREMENT_ID",
-};
+
+export { firebase, firebaseConfig };
 ```
 
-3. Install node modules:
+3. Setup your [Google Firebase console](https://firebase.google.com/):
+    1. Add a new project.
+    2. After your project is done setting up, create a 'Web' app.
+    3. Go to Settings > Project Settings > click on Config (on bottom of screen), then copy the Firebase configuration object.
+    4. Replace the sample `const firebaseConfig` in `config.js` (created above) with your own configuration.
+
+4. Install node modules:
 ```
 npm install
 ```
-4. Start running the app:
+5. Start running the app:
 ```
 expo start
 ```

@@ -12,11 +12,13 @@ import NoteCard from '../../components/Cards/NoteCard';
 import WarningCard from '../../components/Cards/WarningCard';
 import ButtonWhite from '../../components/Buttons/ButtonWhite';
 
-const Objective3Screen = ({navigation}: any) => {
+const Objective3Screen = (props: any) => {
     const [description, setDescription] = useState('');
     const [numOfChar, setNumOfChar] = useState(150);
 
     const charactersLeftText = numOfChar === 1 ? "character left" : "characters left";
+
+    const { objectiveTitle, type } = props.route.params;
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -43,8 +45,14 @@ const Objective3Screen = ({navigation}: any) => {
                         <TextDefault style={styles.charLeftText}>{numOfChar} {charactersLeftText}</TextDefault>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <ButtonWhite style={styles.button} onPress={() => navigation.goBack()}>{'<'} Back</ButtonWhite>
-                    <ButtonWhite style={styles.button} onPress={() => navigation.navigate('Objective4Screen')}>Continue {'>'}</ButtonWhite>
+                    <ButtonWhite style={styles.button} onPress={() => props.navigation.goBack()}>{'<'} Back</ButtonWhite>
+                    <ButtonWhite style={styles.button} onPress={() => props.navigation.navigate('Objective4Screen',
+                        {
+                            objectiveTitle: objectiveTitle,
+                            type: type,
+                            description: description
+                        }
+                    )}>Continue {'>'}</ButtonWhite>
                 </View>
             </View>
         </TouchableWithoutFeedback>

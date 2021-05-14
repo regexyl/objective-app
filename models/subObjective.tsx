@@ -1,8 +1,10 @@
 class SubObjective {
+    id: string;
     subTitle: string;
-    subDeadline: Date;
+    subDeadline: string;
     
-    constructor(subTitle: string, subDeadline: Date) {
+    constructor(id: string, subTitle: string, subDeadline: string) {
+        this.id = id;
         this.subTitle = subTitle;
         this.subDeadline = subDeadline;
     }

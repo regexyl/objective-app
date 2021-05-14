@@ -11,25 +11,37 @@ import TextBlack from '../../components/atomic/TextBlack';
 import ButtonWhite from '../../components/Buttons/ButtonWhite';
 import ButtonWhiteIcon from '../../components/Buttons/ButtonWhiteIcon';
 
-const Objective2Screen = ({navigation}: any) => {
+const Objective2Screen = (props: any) => {
+    const { objectiveTitle } = props.route.params;
     return (
         <View style={styles.screen}>
             <View style={styles.headerContainer}>
                 <Text style={styles.headerText}>Choose how you'd like to complete your objective.</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <ButtonWhiteIcon style={styles.selectButton} onPress={() => navigation.navigate('Objective3Screen')}>
+                <ButtonWhiteIcon style={styles.selectButton} onPress={() => props.navigation.navigate('Objective3Screen',
+                    {
+                        objectiveTitle: objectiveTitle,
+                        type: 'accountability'
+                    }
+                )}>
                     <Ionicons size={40} style={{ marginBottom: -10, marginTop: 5, color: Colors.primary, textAlign: 'center' }} name="people-circle-outline" />
                     <TextBold style={styles.buttonText}>With an accountability partner</TextBold>
                 </ButtonWhiteIcon>
             </View>
             <View style={styles.buttonContainer}>
-                <ButtonWhiteIcon style={styles.selectButton} onPress={() => navigation.navigate('Objective4Screen')}>
+                <ButtonWhiteIcon style={styles.selectButton} onPress={() => props.navigation.navigate('Objective4Screen',
+                    {
+                        objectiveTitle: objectiveTitle,
+                        type: 'solo',
+                        description: null
+                    }
+                )}>
                     <Ionicons size={40} style={{ marginBottom: -10, marginTop: 5, color: Colors.primary, textAlign: 'center' }} name="person-circle-outline" />
-                    <TextBold style={styles.buttonText}>Myself</TextBold>
+                    <TextBold style={styles.buttonText}>Solo</TextBold>
                 </ButtonWhiteIcon>
             </View>
-            <ButtonWhite style={styles.backButton} onPress={() => navigation.goBack()}>{'<'} Back</ButtonWhite>
+            <ButtonWhite style={styles.backButton} onPress={() => props.navigation.goBack()}>{'<'} Back</ButtonWhite>
         </View>
     )
 };

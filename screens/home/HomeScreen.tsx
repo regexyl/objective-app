@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import firebase from 'firebase';
-import { doc, setDoc } from "firebase/firestore"; 
+import { firebase } from '../../src/firebase/config'
 import { Ionicons } from '@expo/vector-icons';
 import { TextInput } from 'react-native-paper'; // temporary
 import ButtonGradient from '../../components/Buttons/ButtonGradient';
@@ -14,23 +13,37 @@ import TextBlack from '../../components/atomic/TextBlack';
 
 const HomeScreen = ({navigation}: any) => {
     const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+    const [test, setTest] = React.useState('');
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
+    const user = firebase.auth().currentUser;
+    const objectivesRef = firebase.firestore().collection('objectives')
+
+    const changeTest = (testText: any) => {
+        console.log('testText: ', testText)
+        setTest(testText)
+    }
+
     const addToFirebase = () => {
-        // incomplete
+        console.log('adding to firebase')
+        objectivesRef.doc(user.uid).set({
+            "testing": test
+        })
     }
 
     const placeholder = 
             <View style={styles.screenContent}>
-                <TextBold style={styles.header}>Your Objectives</TextBold>
+                <TextBold style={styles.header}>Your Objectives {test}</TextBold>
                 <View style={styles.temporary}>
-                    <TextInput />
-                    <ButtonGradient onPress={addToFirebase} >Add to Firebase</ButtonGradient>
+                    <TextInput onChangeText={changeTest} value={test} />
                 </View>
+                <ButtonGradient onPress={addToFirebase} >Add to Firebase</ButtonGradient>
+                <ButtonGradient>Hey there</ButtonGradient>
                 <View style={styles.placeholder}>
                     <Image style={styles.placeholderImage} source={require('../../assets/images/objective-mountain-transparent.png')} />
                     <TextDefault style={styles.placeholderText}>Add an objective!</TextDefault>
                 </View>
+                <ButtonGradient onPress={addToFirebase} >Add to Firebase</ButtonGradient>
             </View>
 
     const addNewGoalButton = 

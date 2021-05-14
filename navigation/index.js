@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import * as firebase from 'firebase';
 
 import Colors from '../constants/Colors';
-import firebaseConfig from '../src/firebase/config';
+import { firebaseConfig } from '../src/firebase/config';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegistrationScreen from '../screens/auth/RegistrationScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';

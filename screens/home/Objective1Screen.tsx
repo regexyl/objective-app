@@ -11,11 +11,26 @@ import TextBlack from '../../components/atomic/TextBlack';
 import ButtonWhite from '../../components/Buttons/ButtonWhite';
 
 const Objective1Screen = ({navigation}: any) => {
-    const [objectiveText, setobjectiveText] = useState('');
-
-    const onChangeInput = ({input}: any) => {
-        setobjectiveText(input)
+    const [objectiveTitle, setObjectiveTitle] = useState('');
+    const [warningContainer, setWarningContainer] = useState<JSX.Element>(null)
+    
+    const onChangeInput = (input: any) => {
+        setObjectiveTitle(input);
+        setWarningContainer(null);
     }
+
+    const goToNextScreen = () => {
+        if (objectiveTitle.length > 0) {
+            navigation.navigate('Objective2Screen', {
+                objectiveTitle: objectiveTitle
+            })
+        } else {
+            setWarningContainer(warning);
+        }
+    }
+
+    const warning = <TextDefault style={styles.warning}>Please fill in your objective.</TextDefault>
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={styles.screen}>
@@ -27,9 +42,12 @@ const Objective1Screen = ({navigation}: any) => {
                     <Image style={styles.logo} source={require('../../assets/images/objective-logo-dark.png')} />
                 </View>
                 <View style={styles.inputContainer}>
-                    <TextInput style={styles.input} label="Objective" onChangeText={onChangeInput} value={objectiveText}></TextInput>
+                    <TextInput style={styles.input} label="Objective" onChangeText={onChangeInput} value={objectiveTitle}></TextInput>
+                    {warningContainer}
                 </View>
-                <ButtonWhite style={styles.createButton} onPress={() => navigation.navigate('Objective2Screen')}>Create my objective</ButtonWhite>
+                <ButtonWhite style={styles.createButton} onPress={goToNextScreen}>
+                    Create my objective
+                </ButtonWhite>
                 <View style={styles.footerContainer}></View>
             </View>
         </TouchableWithoutFeedback>
@@ -73,7 +91,13 @@ const styles = StyleSheet.create({
         marginTop: 60,
         paddingHorizontal: 30
     },
-    footerContainer: {},
+    warning: {
+        color: Colors.taintedWhite,
+        fontSize: 18,
+        marginTop: 8,
+        textAlign: 'center'
+    },
+    footerContainer: {}
 });
 
 export default Objective1Screen;

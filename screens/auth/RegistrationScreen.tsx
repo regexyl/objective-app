@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TextInput, Text, StyleSheet} from 'react-native';
-import firebase from 'firebase';
+import { firebase } from '../../src/firebase/config'
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
@@ -34,6 +34,8 @@ const RegistrationScreen = ({navigation}: any) => {
         setConfirmPassword(passwordVal);
     }
 
+    const usersRef = firebase.firestore().collection('users')
+
     const onRegistration = () => {
         // Check if passwords match first
         if (password === confirmPassword) {
@@ -41,6 +43,12 @@ const RegistrationScreen = ({navigation}: any) => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((result) => {
                     console.log(result)
+                    const userId = result.user.uid
+                    // Create user details document in Firebase
+                    usersRef.doc(userId).set({
+                        "name": name,
+                        "email": email
+                    })
                 })
                 .catch((error) => {
                     console.log(error)

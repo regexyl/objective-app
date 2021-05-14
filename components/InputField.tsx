@@ -5,7 +5,15 @@ import Colors from '../constants/Colors';
 
 const InputField = (props: any) => {
     return (
-        <TextInput secureTextEntry={props.secureTextEntry || false} style={styles.input} onChangeText={props.onChangeText} value={props.value} placeholder={props.placeholder} keyboardType={props.keyboardTypes}  autoCapitalize={props.autoCapitalize || true} />
+        <TextInput 
+            secureTextEntry={props.secureTextEntry || false} 
+            style={styles.input} 
+            onChangeText={props.onChangeText} 
+            value={props.value} 
+            placeholder={props.placeholder} 
+            keyboardType={props.keyboardTypes}  
+            autoCapitalize={props.autoCapitalize || true} 
+        />
     )
 };
 

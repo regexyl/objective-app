@@ -8,7 +8,7 @@ const ButtonOutline = (props: any) => {
     return (
         <TouchableOpacity onPress={props.onPress}>
             <View style={{...styles.button, ...props.style}}>
-                <TextBold style={styles.buttonText}>
+                <TextBold style={{...styles.buttonText, fontSize: props.style.fontSize}}>
                     {props.children}
                 </TextBold>
             </View>
