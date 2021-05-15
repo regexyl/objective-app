@@ -76,8 +76,8 @@ const Objective4Screen = (props: any) => {
     
     const handleConfirm = (date) => {
         // Due to bug in DateTimePicker Modal package, the following condition is added
+        if (date < new Date) { date = new Date }
 
-        
         const chosenDate = moment(date).format("DD/MM/YYYY");
         console.log('date: ', date)
 
