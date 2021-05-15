@@ -5,8 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
 import InputField from '../../components/InputField';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
 import ButtonGradient from '../../components/Buttons/ButtonGradient';
 import ButtonDefault from '../../components/Buttons/ButtonDefault';
 import { TouchableOpacity } from 'react-native-gesture-handler';

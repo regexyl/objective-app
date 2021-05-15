@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
 import { windowHeight, windowWidth } from '../../src/local/config';
-import TextBold from '../../components/atomic/TextBold';
 import ButtonCustom from '../../components/Buttons/ButtonCustom';
+import InputDate from '../../components/Inputs/InputDate';
 
 const SubObjInput = (props: any) => {
-    const [subObjTitle, setSubObjTitle] = useState('');
-
     return (
         <View style={styles.newRow}>
             <View style={styles.finalObjective}>
@@ -20,23 +18,15 @@ const SubObjInput = (props: any) => {
                         style={styles.objectiveTextInput} 
                         placeholder="Add smaller objectives" 
                         onChangeText={props.onChangeText} 
-                        value={props.subTitleValue} />
+                        value={props.subTitleValue} 
+                    />
                 </View>
                 <View style={styles.deadlineText}>
-                    <TextInput 
-                        style={styles.deadlineTextInput} 
-                        placeholder="DD/MM/YYYY" 
-                        value={props.deadlineValue} 
-                        onFocus={props.deadlineOnFocus}
-                        selectTextOnFocus={false}
-                        showSoftInputOnFocus={false}
-                        caretHidden={true}
-                     />
+                    <InputDate
+                        deadlineValue={props.deadlineValue}
+                        deadlineOnFocus={props.deadlineOnFocus}
+                    />
                 </View>
-                {/* <Button 
-                    title="–" 
-                    onPress={props.onPress} 
-                /> */}
                 <ButtonCustom style={styles.subtractButton} onPress={props.onPress} >
                     <Ionicons size={24} style={{ color: Colors.primary, marginRight: 10, marginBottom: -10, marginTop: 5 }} name="remove" />
                 </ButtonCustom>
@@ -59,8 +49,7 @@ const styles = StyleSheet.create({
         marginTop: 3
     },
     finalObjective: {
-        flexDirection: 'row',
-        // height: windowWidth / 16
+        flexDirection: 'row'
     },
     objectiveText: {
         marginLeft: 14,
@@ -72,21 +61,13 @@ const styles = StyleSheet.create({
     },
     objectiveTitle: {
         fontSize: 17,
-        color: Colors.accent,
-        // flexWrap: 'wrap'
+        color: Colors.accent
     },
     deadlineText: {
         width: windowWidth * 0.25
     },
     deadlineTextInput: {
         height: windowWidth / 16 + 5
-    },
-    addButton: {
-        width: windowWidth / 2.8,
-        height: windowHeight / 28,
-        padding: 0,
-        marginVertical: 0,
-        fontSize: 15
     },
     subtractButton: {
         marginLeft: 10

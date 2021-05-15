@@ -7,9 +7,9 @@ import ButtonGradient from '../../components/Buttons/ButtonGradient';
 
 import Colors from '../../constants/Colors';
 import SwitchButton from '../../components/Buttons/SwitchButton';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
-import TextBlack from '../../components/atomic/TextBlack';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
+import TextBlack from '../../components/Text/TextBlack';
 
 const HomeScreen = ({navigation}: any) => {
     const [isSwitchOn, setIsSwitchOn] = React.useState(false);

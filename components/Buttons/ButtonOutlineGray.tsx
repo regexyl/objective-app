@@ -2,7 +2,7 @@ import React from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 
 import Colors from '../../constants/Colors';
-import TextDefault from '../../components/atomic/TextDefault';
+import TextDefault from '../Text/TextDefault';
 
 const ButtonOutlineGray = (props: any) => {
     return (

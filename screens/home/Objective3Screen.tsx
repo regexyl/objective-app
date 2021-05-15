@@ -5,9 +5,9 @@ import {View, Text, TouchableWithoutFeedback, Keyboard, StyleSheet} from 'react-
 import { TextInput } from 'react-native-paper';
 
 import Colors from '../../constants/Colors';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
-import TextBlack from '../../components/atomic/TextBlack';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
+import TextBlack from '../../components/Text/TextBlack';
 import NoteCard from '../../components/Cards/NoteCard';
 import WarningCard from '../../components/Cards/WarningCard';
 import ButtonWhite from '../../components/Buttons/ButtonWhite';

@@ -4,8 +4,8 @@ import firebase from 'firebase';
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
-import TextDefault from './atomic/TextDefault';
-import TextBold from './atomic/TextBold';
+import TextDefault from './Text/TextDefault';
+import TextBold from './Text/TextBold';
 import ButtonGradient from './Buttons/ButtonGradient';
 import ButtonDefault from './Buttons/ButtonDefault';
 import { TouchableOpacity } from 'react-native-gesture-handler';

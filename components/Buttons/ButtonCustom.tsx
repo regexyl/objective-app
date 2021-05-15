@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 
-import TextBold from '../../components/atomic/TextBold';
+import TextBold from '../Text/TextBold';
 import Colors from '../../constants/Colors';
 
 const ButtonCustom = (props: any) => {

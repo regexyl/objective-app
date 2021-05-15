@@ -5,8 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
 import ButtonGradient from '../../components/Buttons/ButtonGradient';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SettingsScreen = ({navigation}: any) => {

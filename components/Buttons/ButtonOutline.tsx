@@ -2,7 +2,7 @@ import React from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 
 import Colors from '../../constants/Colors';
-import TextBold from '../atomic/TextBold';
+import TextBold from '../Text/TextBold';
 
 const ButtonOutline = (props: any) => {
     return (

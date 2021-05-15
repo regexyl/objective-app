@@ -4,8 +4,8 @@ import { firebase } from '../../src/firebase/config'
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
 import ButtonDefault from '../../components/Buttons/ButtonDefault';
 import ButtonOutline from '../../components/Buttons/ButtonOutline';
 import Divider from '../../components/Divider';

@@ -5,37 +5,38 @@ import {View, Text, TouchableWithoutFeedback, Keyboard, FlatList, StyleSheet} fr
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from 'moment';
 
-import SubObjective from '../../models/subObjective';
-
 import { windowHeight, windowWidth } from '../../src/local/config';
 import Colors from '../../constants/Colors';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
+import SubObjective from '../../models/subObjective';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
 import ButtonOutline from '../../components/Buttons/ButtonOutline'
 import ButtonWhite from '../../components/Buttons/ButtonWhite';
 import NoteCard from '../../components/Cards/NoteCard';
 import SubObjInput from '../../components/Inputs/SubObjInput';
+import InputDate from '../../components/Inputs/InputDate';
 
 const Objective4Screen = (props: any) => {
     const [latestId, setLatestId] = useState(1);
     const [currInputIndex, setCurrInputIndex] = useState('');
+    const [minDate, setMinDate] = useState(new Date);
     const [numOfSubObj, setNumOfSubObj] = useState(1);
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-    // const [timelineImgHeight, setTimelineImgHeight] = useState(40);
+    const [finalDeadline, setFinalDeadline] = useState('');
 
     const { objectiveTitle, type, description } = props.route.params;
-    console.log('SCREEN IS RELOADED')
-    console.log('currInputIndex: ', currInputIndex)
-    const [subObjectives, setSubObjectives] = useState<SubObjective[]>([{
-        id: '0',
-        subTitle: '',
-        subDeadline: '14/05/2021'
-    },
-]);
+
+    const [subObjectives, setSubObjectives] = useState<SubObjective[]>([
+        {
+            id: '0',
+            subTitle: '',
+            subDeadline: ''
+        },
+    ]);
+
+    console.log('subObjectives: ', subObjectives)
 
     const timelineImgHeight = 40 * numOfSubObj
-
-    console.log('timelineImgHeight: ', timelineImgHeight)
 
     /**
      * @dev The following functions display the DatePicker modal and handles chosen date.
@@ -43,35 +44,65 @@ const Objective4Screen = (props: any) => {
     const showDatePicker = (selectedIndex: string) => {
         Keyboard.dismiss();
         setCurrInputIndex(selectedIndex);
-        console.log('currInputIndex: ', currInputIndex)
+
+        let i: number;
+        let indexInSubObjArr: number;
+        let currMinDate: Date;
+
+        for (i = 0; i < subObjectives.length; i++) {
+            if (subObjectives[i].id === selectedIndex) {
+                indexInSubObjArr = i;
+                break;
+            }
+        }
+
+        if (indexInSubObjArr === 0) {
+            currMinDate = new Date;
+        } else {
+            const prevObjDate = subObjectives[indexInSubObjArr - 1].subDeadline;
+            console.log('prevObjDate: ', prevObjDate)
+            const year = parseInt(prevObjDate.slice(-4));
+            const month = parseInt(prevObjDate.slice(3, 5));
+            const day = parseInt(prevObjDate.slice(0, 2));
+            currMinDate = new Date(year, month - 1, day);
+        }
+        setMinDate(currMinDate);
         setDatePickerVisibility(true);
       };
-    
+
     const hideDatePicker = () => {
         setDatePickerVisibility(false);
     };
     
     const handleConfirm = (date) => {
-        console.log("A date has been picked: ", date);
+        // Due to bug in DateTimePicker Modal package, the following condition is added
+
+        
         const chosenDate = moment(date).format("DD/MM/YYYY");
+        console.log('date: ', date)
 
-        // Add the new chosen date to the specific row
-        let i: number;
-        let indexToChange: number;
+        console.log('currInputIndex: ', currInputIndex)
 
-        for (i = 0; i < subObjectives.length; i++) {
-            if (subObjectives[i].id === currInputIndex) {
-                indexToChange = i;
-                break;
+        if (currInputIndex !== '-1') {
+            let i: number;
+            let indexToChange: number;
+    
+            for (i = 0; i < subObjectives.length; i++) {
+                if (subObjectives[i].id === currInputIndex) {
+                    indexToChange = i;
+                    break;
+                }
             }
+    
+            let subObjectivesCopy = [...subObjectives];
+            let item = {...subObjectivesCopy[indexToChange]};
+            item.subDeadline = chosenDate;
+            subObjectivesCopy[indexToChange] = item;
+    
+            setSubObjectives([ ...subObjectivesCopy ])
+        } else {
+            setFinalDeadline(chosenDate);
         }
-
-        let subObjectivesCopy = [...subObjectives];
-        let item = {...subObjectivesCopy[indexToChange]};
-        item.subDeadline = chosenDate;
-        subObjectivesCopy[indexToChange] = item;
-
-        setSubObjectives([ ...subObjectivesCopy ])
 
         hideDatePicker();
     };
@@ -82,15 +113,14 @@ const Objective4Screen = (props: any) => {
 
     const addSubObj = () => {
         if (numOfSubObj < 3) {
-            setSubObjectives((currentSubObj) => [ ...subObjectives, 
+            setSubObjectives(() => [ ...subObjectives, 
                 { 
                     id: latestId.toString(), 
                     subTitle: '',
-                    subDeadline: moment(new Date()).format("DD/MM/YYYY")
+                    subDeadline: ''
                 }]);
             setLatestId(latestId + 1);
             setNumOfSubObj(numOfSubObj + 1);
-            // setTimelineImgHeight(40 * numOfSubObj);
         }
     }
 
@@ -98,7 +128,6 @@ const Objective4Screen = (props: any) => {
         setSubObjectives((currentSubObj) => {
             return currentSubObj.filter((subObj) => subObj.id !== selectedIndex)
         })
-        // setTimelineImgHeight(40 * numOfSubObj);
         if (numOfSubObj > 0) {
             setNumOfSubObj(numOfSubObj - 1);
         }
@@ -181,6 +210,17 @@ const Objective4Screen = (props: any) => {
 
                 </View>
 
+                <View style={styles.fullWidthContainer}>
+                    <View style={styles.timelineHeader}>
+                        <TextBold style={styles.fullWidthHeader}>Objective Completion Date</TextBold>
+                    </View>
+                    <InputDate
+                        style={styles.finalDeadlineInput}
+                        deadlineValue={finalDeadline}
+                        deadlineOnFocus={showDatePicker.bind(this, '-1')}
+                    />
+                </View>
+
                 <View style={styles.paddedContainer}>
                     <View style={styles.buttonContainer}>
                         <ButtonWhite style={styles.button} onPress={() => props.navigation.goBack()}>{'<'} Back</ButtonWhite>
@@ -201,7 +241,7 @@ const Objective4Screen = (props: any) => {
                     mode="date"
                     onConfirm={handleConfirm}
                     onCancel={hideDatePicker}
-                    minimumDate={new Date}
+                    minimumDate={minDate}
                 />
             </View>
         </TouchableWithoutFeedback>
@@ -260,7 +300,8 @@ const styles = StyleSheet.create({
     },
     fullWidthContainer: {
         backgroundColor: Colors.taintedWhite,
-        marginVertical: 20,
+        marginTop: 20,
+        marginBottom: 10,
         padding: 20
     },
     timelineHeader: {
@@ -341,6 +382,9 @@ const styles = StyleSheet.create({
         marginVertical: 0,
         fontSize: 15
     },
+    finalDeadlineInput: {
+        marginVertical: 14
+    }
 });
 
 export default Objective4Screen;

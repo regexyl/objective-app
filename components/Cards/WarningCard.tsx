@@ -2,8 +2,8 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import Colors from '../../constants/Colors';
-import TextDefault from '../atomic/TextDefault';
-import TextBold from '../atomic/TextBold';
+import TextDefault from '../Text/TextDefault';
+import TextBold from '../Text/TextBold';
 
 const WarningCard = (props: any) => {
     return (

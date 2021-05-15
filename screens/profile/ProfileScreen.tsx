@@ -4,15 +4,15 @@ import firebase from 'firebase';
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
 import ButtonGradient from '../../components/Buttons/ButtonGradient';
 import ButtonDefault from '../../components/Buttons/ButtonDefault';
 import ButtonOutlineGray from '../../components/Buttons/ButtonOutlineGray';
 import ProfileStats from '../../components/ProfileStats';
 import ProfileCard from '../../components/Cards/ProfileCard';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import TextBlack from '../../components/atomic/TextBlack';
+import TextBlack from '../../components/Text/TextBlack';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 const DATA = [

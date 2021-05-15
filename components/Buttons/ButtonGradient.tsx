@@ -3,7 +3,7 @@ import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import Colors from '../../constants/Colors';
-import TextBold from '../atomic/TextBold';
+import TextBold from '../Text/TextBold';
 
 const ButtonGradient = (props: any) => {
     return (

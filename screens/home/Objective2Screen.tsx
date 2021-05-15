@@ -5,9 +5,9 @@ import {View, Text, StyleSheet} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
-import TextDefault from '../../components/atomic/TextDefault';
-import TextBold from '../../components/atomic/TextBold';
-import TextBlack from '../../components/atomic/TextBlack';
+import TextDefault from '../../components/Text/TextDefault';
+import TextBold from '../../components/Text/TextBold';
+import TextBlack from '../../components/Text/TextBlack';
 import ButtonWhite from '../../components/Buttons/ButtonWhite';
 import ButtonWhiteIcon from '../../components/Buttons/ButtonWhiteIcon';
 
