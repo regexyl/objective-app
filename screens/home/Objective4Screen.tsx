@@ -58,13 +58,16 @@ const Objective4Screen = (props: any) => {
 
         if (indexInSubObjArr === 0) {
             currMinDate = new Date;
-        } else {
+        } else if (indexInSubObjArr > 0) {
             const prevObjDate = subObjectives[indexInSubObjArr - 1].subDeadline;
             console.log('prevObjDate: ', prevObjDate)
             const year = parseInt(prevObjDate.slice(-4));
             const month = parseInt(prevObjDate.slice(3, 5));
             const day = parseInt(prevObjDate.slice(0, 2));
             currMinDate = new Date(year, month - 1, day);
+        } else {
+            subObjectives.slice(-1)[0].subDeadline
+            currMinDate = subObjectives.slice(-1)[0].subDeadline;
         }
         setMinDate(currMinDate);
         setDatePickerVisibility(true);
