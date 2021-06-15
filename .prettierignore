@@ -1,0 +1,6 @@
+# Ignore artifacts:
+.expo./
+.expo-shared./
+.vscode./
+assets/
+node_modules/

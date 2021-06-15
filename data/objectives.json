@@ -1,0 +1,67 @@
+{
+  "subObj1": {
+    "deadline": "2021-06-28T:00:00.000Z",
+    "description": "",
+    "partnerStatus": {},
+    "selectedPartnerMode": false,
+    "notifSchedule": {
+      "day": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "sun": true
+      },
+      "time": 900
+    },
+    "subObjectives": [
+      {
+        "subDeadline": "2021-06-19T:00:00.000Z",
+        "subTitle": "Clock 10km in 1.5h"
+      },
+      {
+        "subDeadline": "2021-06-22T:00:00.000Z",
+        "subTitle": "Clock 14km in 1.8h"
+      },
+      {
+        "subDeadline": "2021-06-24T:00:00.000Z",
+        "subTitle": "Clock 16km in 2h"
+      }
+    ],
+    "title": "Run 17.5km in the ST Virtual Run 2021"
+  },
+  "subObj2": {
+    "deadline": "2021-06-28T:00:00.000Z",
+    "description": "",
+    "partnerStatus": {
+      "havePartner": false,
+      "partnerId": ""
+    },
+    "selectedPartnerMode": true,
+    "notifSchedule": {
+      "day": {
+        "mon": true,
+        "tue": false,
+        "wed": true,
+        "thu": false,
+        "fri": true,
+        "sat": false,
+        "sun": true
+      },
+      "time": 900
+    },
+    "subObjectives": [
+      {
+        "subDeadline": "2021-06-20T:00:00.000Z",
+        "subTitle": "Clock 1km in 10 min"
+      },
+      {
+        "subDeadline": "2021-06-23T:00:00.000Z",
+        "subTitle": "Clock 2km in 20 min"
+      }
+    ],
+    "title": "Swim 2km in the Aprilbank Virtual Swim 2021"
+  }
+}

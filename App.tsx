@@ -1,20 +1,20 @@
-import React from 'react';
-import { useFonts } from 'expo-font';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import React from "react";
+import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
-import Colors from './constants/Colors';
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import Colors from "./constants/Colors";
+import useCachedResources from "./hooks/useCachedResources";
+import useColorScheme from "./hooks/useColorScheme";
+import Navigation from "./navigation";
 
 const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    ...Colors
-  }
+    ...Colors,
+  },
 };
 
 export default function App() {
@@ -22,10 +22,10 @@ export default function App() {
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
-    'lato-regular': require('./assets/fonts/Lato-Regular.ttf'),
-    'lato-bold': require('./assets/fonts/Lato-Bold.ttf'),
-    'lato-black': require('./assets/fonts/Lato-Black.ttf'),
-  })
+    "lato-regular": require("./assets/fonts/Lato-Regular.ttf"),
+    "lato-bold": require("./assets/fonts/Lato-Bold.ttf"),
+    "lato-black": require("./assets/fonts/Lato-Black.ttf"),
+  });
 
   if (!isLoadingComplete || !loaded) {
     return null;
@@ -33,7 +33,7 @@ export default function App() {
     return (
       <PaperProvider theme={theme}>
         <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme}/>
+          <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </SafeAreaProvider>
       </PaperProvider>

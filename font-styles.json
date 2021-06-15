@@ -1,0 +1,11 @@
+{
+  "font-lato-regular": {
+    "fontFamily": "lato-regular"
+  },
+  "font-lato-bold": {
+    "fontFamily": "lato-bold"
+  },
+  "font-lato-black": {
+    "fontFamily": "lato-black"
+  }
+}

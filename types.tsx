@@ -25,6 +25,10 @@ export type HomeParamList = {
   Objective2Screen: undefined;
   Objective3Screen: undefined;
   Objective4Screen: undefined;
+  CreationSuccessScreen: undefined;
+  ObjectiveSummaryScreen: undefined;
+  ObjectiveDetailScreen: undefined;
+  ChatScreen: undefined;
 };
 
 export type ProfileParamList = {
