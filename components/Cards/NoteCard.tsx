@@ -5,11 +5,19 @@ import Colors from "../../constants/Colors";
 import TextDefault from "../Text/TextDefault";
 import TextBold from "../Text/TextBold";
 
-const NoteCard = (props: any) => {
+interface NoteCardProps {
+  style: Object;
+  children: React.ReactNode;
+}
+
+const NoteCard: React.FC<NoteCardProps> = ({
+  style,
+  children,
+}: NoteCardProps) => {
   return (
-    <View style={{ ...styles.note, ...props.style }}>
+    <View style={{ ...styles.note, ...style }}>
       <TextBold style={styles.noteTitle}>NOTE</TextBold>
-      <TextDefault style={styles.noteText}>{props.children}</TextDefault>
+      <TextDefault style={styles.noteText}>{children}</TextDefault>
     </View>
   );
 };

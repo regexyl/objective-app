@@ -8,6 +8,7 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { db, auth } from "../../src/firebase/config";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -19,8 +20,15 @@ import ButtonDefault from "../../components/Buttons/ButtonDefault";
 import ButtonOutline from "../../components/Buttons/ButtonOutline";
 import Divider from "../../components/Divider";
 import InputField from "../../components/InputField";
+import { AuthNavProps, AuthParamList } from "types";
 
-const RegistrationScreen = ({ navigation }: any) => {
+export interface RegistrationScreenProps {
+  navigation: StackNavigationProp<AuthParamList, "RegistrationScreen">;
+}
+
+const RegistrationScreen: React.FC<RegistrationScreenProps> = ({
+  navigation,
+}: AuthNavProps<"RegistrationScreen">) => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -53,7 +61,7 @@ const RegistrationScreen = ({ navigation }: any) => {
         .createUserWithEmailAndPassword(email, password)
         .then((result) => {
           console.log(result);
-          const userId = result.user.uid;
+          const userId = result?.user.uid;
           // Create user details document in Firebase
           usersRef.doc(userId).set({
             name: name,

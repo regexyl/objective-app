@@ -1,8 +1,3 @@
-/**
- * Learn more about createBottomTabNavigator:
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
-
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
@@ -11,22 +6,21 @@ import {
 } from "@react-navigation/stack";
 import * as React from "react";
 import { createSharedElementStackNavigator } from "react-navigation-shared-element";
-
-import Colors from "../constants/Colors";
-import ActivityScreen from "../screens/activity/ActivityScreen";
-import HomeScreen from "../screens/home/HomeScreen";
-import ObjectiveMainScreen from "../screens/home/create-objective/ObjectiveMainScreen";
-import Objective1Screen from "../screens/home/create-objective/Objective1Screen";
-import Objective2Screen from "../screens/home/create-objective/Objective2Screen";
-import Objective3Screen from "../screens/home/create-objective/Objective3Screen";
-import Objective4Screen from "../screens/home/create-objective/Objective4Screen";
-import CreationSuccessScreen from "../screens/home/create-objective/CreationSuccessScreen";
-import ObjectiveSummaryScreen from "../screens/home/create-objective/ObjectiveSummaryScreen";
-import ObjectiveDetailScreen from "../screens/home/objective-details/ObjectiveDetailScreen";
-import ChatScreen from "../screens/home/objective-details/ChatScreen";
-import ProfileScreen from "../screens/profile/ProfileScreen";
-import EditProfileScreen from "../screens/profile/EditProfileScreen";
-import SettingsScreen from "../screens/profile/SettingsScreen";
+import {
+  ActivityScreen,
+  CreationSuccessScreen,
+  Objective1Screen,
+  Objective2Screen,
+  Objective3Screen,
+  Objective4Screen,
+  ObjectiveSummaryScreen,
+  ChatScreen,
+  ObjectiveDetailScreen,
+  HomeScreen,
+  EditProfileScreen,
+  ProfileScreen,
+  SettingsScreen,
+} from "../screens";
 import {
   BottomTabParamList,
   ActivityParamList,
@@ -82,8 +76,6 @@ export default function BottomTabNavigator() {
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof Ionicons>["name"];
   color: string;
@@ -97,10 +89,7 @@ function TabBarIcon(props: {
   );
 }
 
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const ActivityStack = createStackNavigator<ActivityParamList>();
-
 function ActivityNavigator() {
   return (
     <ActivityStack.Navigator screenOptions={{ headerShown: false }}>
@@ -110,7 +99,6 @@ function ActivityNavigator() {
 }
 
 const HomeStack = createSharedElementStackNavigator<HomeParamList>();
-
 const objectiveDetailScreenOptions = {
   headerBackTitleVisible: false,
   cardStyleInterpolator: ({ current: { progress } }) => {
@@ -121,15 +109,10 @@ const objectiveDetailScreenOptions = {
     };
   },
 };
-
 function HomeNavigator() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
-      <HomeStack.Screen
-        name="ObjectiveMainScreen"
-        component={ObjectiveMainScreen}
-      />
       <HomeStack.Screen
         name="Objective1Screen"
         component={Objective1Screen}

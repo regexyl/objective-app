@@ -1,19 +1,26 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { View, Text, StyleSheet } from "react-native";
+import { Card } from "react-native-paper";
 import { tailwind } from "tailwind";
-import LottieView from "lottie-react-native";
 
 import { db, auth } from "../../../src/firebase/config";
 import { windowHeight, windowWidth } from "../../../src/local/config";
 import Colors from "../../../constants/Colors";
 import ButtonCard from "../../../components/Buttons/ButtonCard";
 import Timeline from "../../../components/Timeline";
-import CancelObjCreationButton from "../../../components/IconButtons/CancelObjCreationButton";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { HomeNavProps, HomeParamList } from "types";
+import { RouteProp } from "@react-navigation/native";
 
-const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
+export interface ObjectiveSummaryScreenProps {
+  navigation: StackNavigationProp<HomeParamList, "ObjectiveSummaryScreen">;
+  route: RouteProp<HomeParamList, "ObjectiveSummaryScreen">;
+}
 
-const ObjectiveSummaryScreen = ({ route, navigation }: Props) => {
+const ObjectiveSummaryScreen: React.FC<ObjectiveSummaryScreenProps> = ({
+  route,
+  navigation,
+}: HomeNavProps<"ObjectiveSummaryScreen">) => {
   const { objectiveTitle, type, description, subObjectives, finalDeadline } =
     route.params;
 
@@ -121,7 +128,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: Colors.primary,
-    paddingVertical: 50,
     alignItems: "center",
     paddingVertical: windowHeight * 0.12,
   },

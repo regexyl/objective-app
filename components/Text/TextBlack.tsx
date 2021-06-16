@@ -1,13 +1,23 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 
-const TextBlack = (props: any) => {
+interface TextBlackProps {
+  numberOfLines?: number;
+  style?: Object;
+  children: React.ReactNode;
+}
+
+const TextBlack: React.FC<TextBlackProps> = ({
+  numberOfLines,
+  style,
+  children,
+}: TextBlackProps) => {
   return (
     <Text
-      numberOfLines={props.numberOfLines || 10}
-      style={{ ...styles.text, ...props.style }}
+      numberOfLines={numberOfLines || 10}
+      style={{ ...styles.text, ...style }}
     >
-      {props.children}
+      {children}
     </Text>
   );
 };

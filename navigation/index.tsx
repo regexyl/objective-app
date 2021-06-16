@@ -10,7 +10,7 @@ import { auth } from "../src/firebase/config";
 import Colors from "../constants/Colors";
 import LoginScreen from "../screens/auth/LoginScreen";
 import RegistrationScreen from "../screens/auth/RegistrationScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
+import NotFoundScreen from "../screens/misc/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -25,7 +25,7 @@ const MyTheme = {
 
 const Stack = createStackNavigator();
 
-export default function Navigation({ colorScheme }) {
+export default function Navigation() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   auth.onAuthStateChanged((user) => {

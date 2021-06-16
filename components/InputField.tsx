@@ -1,18 +1,34 @@
 import React from "react";
-import { TextInput, StyleSheet } from "react-native";
+import { TextInput, StyleSheet, KeyboardTypeOptions } from "react-native";
 
 import Colors from "../constants/Colors";
 
-const InputField = (props: any) => {
+interface InputFieldProps {
+  value: string;
+  onChangeText: (text: string) => void;
+  secureTextEntry?: boolean;
+  placeholder?: string;
+  keyboardType?: KeyboardTypeOptions;
+  autoCapitalize?: "none" | "sentences" | "words" | "characters";
+}
+
+const InputField: React.FC<InputFieldProps> = ({
+  secureTextEntry,
+  onChangeText,
+  value,
+  placeholder,
+  keyboardType,
+  autoCapitalize,
+}: InputFieldProps) => {
   return (
     <TextInput
-      secureTextEntry={props.secureTextEntry || false}
+      secureTextEntry={secureTextEntry || false}
       style={styles.input}
-      onChangeText={props.onChangeText}
-      value={props.value}
-      placeholder={props.placeholder}
-      keyboardType={props.keyboardTypes}
-      autoCapitalize={props.autoCapitalize || true}
+      onChangeText={onChangeText}
+      value={value}
+      placeholder={placeholder}
+      keyboardType={keyboardType}
+      autoCapitalize={autoCapitalize}
       placeholderTextColor={Colors.darkGray}
     />
   );

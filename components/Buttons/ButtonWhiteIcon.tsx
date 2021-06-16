@@ -2,12 +2,21 @@ import React from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 
 import Colors from "../../constants/Colors";
-import TextBold from "../Text/TextBold";
 
-const ButtonWhiteIcon = (props: any) => {
+interface ButtonWhiteIconProps {
+  onPress: () => void;
+  style?: Object;
+  children: React.ReactNode;
+}
+
+const ButtonWhiteIcon: React.FC<ButtonWhiteIconProps> = ({
+  onPress,
+  style,
+  children,
+}) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={{ ...styles.button, ...props.style }}>{props.children}</View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={{ ...styles.button, ...style }}>{children}</View>
     </TouchableOpacity>
   );
 };

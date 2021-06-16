@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const ModalSelect = () => {
+const OnboardingScreen = () => {
   return <View></View>;
 };
 
 const styles = StyleSheet.create({});
 
-export default ModalSelect;
+export default OnboardingScreen;

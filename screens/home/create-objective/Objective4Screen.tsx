@@ -1,5 +1,4 @@
 // For accountability partner obj: Describe objective in detail for NLP API.
-
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -11,6 +10,8 @@ import {
   StyleSheet,
   LogBox,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from "moment";
 
@@ -26,8 +27,17 @@ import NoteCard from "../../../components/Cards/NoteCard";
 import SubObjInput from "../../../components/Inputs/SubObjInput";
 import InputDate from "../../../components/Inputs/InputDate";
 import CancelObjCreationButton from "../../../components/IconButtons/CancelObjCreationButton";
+import { HomeNavProps, HomeParamList } from "types";
 
-const Objective4Screen = ({ route, navigation }: Props) => {
+export interface Objective4ScreenProps {
+  navigation: StackNavigationProp<HomeParamList, "Objective4Screen">;
+  route: RouteProp<HomeParamList, "Objective4Screen">;
+}
+
+const Objective4Screen = ({
+  route,
+  navigation,
+}: HomeNavProps<"Objective4Screen">) => {
   const [latestId, setLatestId] = useState(1);
   const [currInputIndex, setCurrInputIndex] = useState("");
   const [minDate, setMinDate] = useState(new Date());
@@ -41,6 +51,7 @@ const Objective4Screen = ({ route, navigation }: Props) => {
       id: "0",
       subTitle: "",
       subDeadline: "",
+      isCompleted: false,
     },
   ]);
 
@@ -164,6 +175,7 @@ const Objective4Screen = ({ route, navigation }: Props) => {
           id: latestId.toString(),
           subTitle: "",
           subDeadline: "",
+          isCompleted: false,
         },
       ]);
       setLatestId(latestId + 1);

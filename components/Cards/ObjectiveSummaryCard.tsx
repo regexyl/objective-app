@@ -8,9 +8,9 @@ import { auth } from "../../src/firebase/config";
 
 import { windowHeight, windowWidth } from "../../src/local/config";
 
-const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
+interface ObjectiveSummaryCardProps {}
 
-const ObjectiveSummaryCard = (props: any) => {
+const ObjectiveSummaryCard: React.FC<ObjectiveSummaryCardProps> = () => {
   const getUri = (seed: string) => {
     const hash: string = sha256(seed);
     // retrieve DiceBear Avatars from API at https://avatars.dicebear.com/docs/http-api

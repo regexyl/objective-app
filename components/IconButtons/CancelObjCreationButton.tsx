@@ -6,11 +6,13 @@ import * as Animatable from "react-native-animatable";
 
 import { windowHeight, windowWidth } from "../../src/local/config";
 
+interface CancelObjCreationButtonProps {}
+
 // This close button goes back to the home screen
-const CancelObjCreationButton = () => {
+const CancelObjCreationButton: React.FC<CancelObjCreationButtonProps> = () => {
   const navigation = useNavigation();
   console.log("navigation, ", navigation);
-  const buttonRef = React.useRef();
+  const buttonRef = React.useRef(null);
 
   const closeModalAlert = () =>
     Alert.alert(

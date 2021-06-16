@@ -6,22 +6,34 @@ import Colors from "../../constants/Colors";
 import TextDefault from "../Text/TextDefault";
 import TextBold from "../Text/TextBold";
 
-const ProfileCard = (props: any) => {
+interface ProfileCardProps {
+  style: Object;
+  objectiveTitle: string;
+  duration: string;
+  finishDate: string;
+}
+
+const ProfileCard: React.FC<ProfileCardProps> = ({
+  style,
+  objectiveTitle,
+  duration,
+  finishDate,
+}: ProfileCardProps) => {
   return (
-    <View style={{ ...styles.card, ...props.style }}>
+    <View style={{ ...styles.card, ...style }}>
       <View style={styles.topContainer}>
         <TextDefault numberOfLines={4} style={styles.objectiveTitle}>
-          {props.objectiveTitle}
+          {objectiveTitle}
         </TextDefault>
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.row}>
           <TextDefault style={styles.bottomHeader}>Duration: </TextDefault>
-          <TextBold style={styles.highlight}>{props.duration}</TextBold>
+          <TextBold style={styles.highlight}>{duration}</TextBold>
         </View>
         <View style={styles.row}>
           <TextDefault style={styles.bottomHeader}>Finish Date: </TextDefault>
-          <TextBold style={styles.highlight}>{props.finishDate}</TextBold>
+          <TextBold style={styles.highlight}>{finishDate}</TextBold>
         </View>
       </View>
     </View>

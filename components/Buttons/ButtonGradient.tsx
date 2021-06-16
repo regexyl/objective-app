@@ -5,17 +5,27 @@ import { LinearGradient } from "expo-linear-gradient";
 import Colors from "../../constants/Colors";
 import TextBold from "../Text/TextBold";
 
-const ButtonGradient = (props: any) => {
+interface ButtonGradientProps {
+  onPress: () => {};
+  style: Object;
+  children: React.ReactNode;
+}
+
+const ButtonGradient: React.FC<ButtonGradientProps> = ({
+  onPress,
+  style,
+  children,
+}: ButtonGradientProps) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={onPress}>
       <LinearGradient
         colors={buttonGradient}
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
         locations={[0, 0.99]}
-        style={{ ...styles.button, ...props.style }}
+        style={{ ...styles.button, ...style }}
       >
-        <TextBold style={styles.buttonText}>{props.children}</TextBold>
+        <TextBold style={styles.buttonText}>{children}</TextBold>
       </LinearGradient>
     </TouchableOpacity>
   );

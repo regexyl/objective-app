@@ -3,7 +3,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { StackNavigationProp } from "@react-navigation/stack";
 
+import { HomeNavProps, HomeParamList } from "types";
 import Colors from "../../../constants/Colors";
 import TextDefault from "../../../components/Text/TextDefault";
 import TextBold from "../../../components/Text/TextBold";
@@ -12,7 +14,14 @@ import ButtonWhite from "../../../components/Buttons/ButtonWhite";
 import ButtonWhiteIcon from "../../../components/Buttons/ButtonWhiteIcon";
 import CancelObjCreationButton from "../../../components/IconButtons/CancelObjCreationButton";
 
-const Objective2Screen = ({ route, navigation }: Props) => {
+export interface Objective2ScreenProps {
+  navigation: StackNavigationProp<HomeParamList, "Objective2Screen">;
+}
+
+const Objective2Screen: React.FC<Objective2ScreenProps> = ({
+  route,
+  navigation,
+}: HomeNavProps<"Objective2Screen">) => {
   console.log("objective2screen route: ", route);
   const { objectiveTitle } = route.params;
 

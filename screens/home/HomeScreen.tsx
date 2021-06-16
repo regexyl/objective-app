@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
 import { View, Image, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { TextInput } from "react-native-paper"; // temporary
 import { SharedElement } from "react-navigation-shared-element";
 import { tailwind } from "tailwind";
 import LottieView from "lottie-react-native";
@@ -17,8 +15,11 @@ import TextDefault from "../../components/Text/TextDefault";
 import TextBold from "../../components/Text/TextBold";
 import TextBlack from "../../components/Text/TextBlack";
 import ObjectiveSummaryCard from "../../components/Cards/ObjectiveSummaryCard";
+import { HomeNavProps } from "types";
 
-const HomeScreen = ({ navigation }: Props) => {
+const HomeScreen: React.FC<HomeNavProps<"HomeScreen">> = ({
+  navigation,
+}: HomeNavProps<"HomeScreen">) => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [test, setTest] = React.useState("");
   const MountainAnimationRef = useRef(null);
@@ -32,12 +33,14 @@ const HomeScreen = ({ navigation }: Props) => {
   };
 
   function getNumOfCompletedObj() {
+    console.log("executing function");
     let numOfCompletedObj = "0";
     db.collection("objectives")
       .where("uid", "==", auth?.currentUser?.uid)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
+          console.log("getting from firebase");
           // doc.data() is never undefined for query doc snapshots
           const data = doc.data();
           console.log(doc.id, " => ", data);
@@ -89,9 +92,7 @@ const HomeScreen = ({ navigation }: Props) => {
   const objectiveList = (
     <View style={styles.screenContent}>
       <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("ObjectiveDetailScreen", { test: "test" })
-        }
+        onPress={() => navigation.navigate("ObjectiveDetailScreen")}
       >
         {/* sub in item via map later */}
         <SharedElement id="1">
@@ -120,7 +121,7 @@ const HomeScreen = ({ navigation }: Props) => {
             "font-lato-bold text-xl text-gray-500 mb-3 text-center"
           )}
         >
-          You have completed {getNumOfCompletedObj} objectives.
+          You have completed {getNumOfCompletedObj()} objectives.
         </Text>
         <Text style={tailwind("font-lato-bold text-4xl mb-8 text-center")}>
           Ready to take on {"\n"}a new one?
@@ -152,7 +153,10 @@ const HomeScreen = ({ navigation }: Props) => {
           style={styles.logo}
         />
         <View style={styles.switchButton}>
-          <SwitchButton value={isSwitchOn} onValueChange={onToggleSwitch} />
+          <SwitchButton
+            isSwitchOn={isSwitchOn}
+            onValueChange={onToggleSwitch}
+          />
         </View>
       </View>
       <View>{content}</View>

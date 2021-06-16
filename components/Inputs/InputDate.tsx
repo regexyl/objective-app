@@ -4,13 +4,23 @@ import { TextInput } from "react-native-paper";
 
 import { windowWidth } from "../../src/local/config";
 
-const InputDate = (props: any) => {
+interface InputDateProps {
+  style: Object;
+  deadlineValue: string;
+  deadlineOnFocus: () => {};
+}
+
+const InputDate: React.FC<InputDateProps> = ({
+  style,
+  deadlineValue,
+  deadlineOnFocus,
+}: InputDateProps) => {
   return (
     <TextInput
-      style={{ ...styles.deadlineTextInput, ...props.style }}
+      style={{ ...styles.deadlineTextInput, ...style }}
       placeholder="DD/MM/YYYY"
-      value={props.deadlineValue}
-      onFocus={props.deadlineOnFocus}
+      value={deadlineValue}
+      onFocus={deadlineOnFocus}
       selectTextOnFocus={false}
       showSoftInputOnFocus={false}
       caretHidden={true}

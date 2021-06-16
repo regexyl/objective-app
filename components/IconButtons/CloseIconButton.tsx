@@ -6,8 +6,14 @@ import * as Animatable from "react-native-animatable";
 
 import { windowHeight, windowWidth } from "../../src/local/config";
 
+interface CloseIconButtonProps {
+  onPress: () => void;
+}
+
 // This close button goes back to the home screen
-const CloseIconButton = (props: Props) => {
+const CloseIconButton: React.FC<CloseIconButtonProps> = ({
+  onPress,
+}: CloseIconButtonProps) => {
   const navigation = useNavigation();
   console.log("navigation, ", navigation);
   const buttonRef = React.useRef();
@@ -26,7 +32,7 @@ const CloseIconButton = (props: Props) => {
         size={28}
         color="#fff"
         style={styles.cancel}
-        onPress={props.onPress}
+        onPress={onPress}
       />
     </Animatable.View>
   );

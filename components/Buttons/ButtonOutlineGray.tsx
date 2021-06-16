@@ -4,13 +4,20 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import TextDefault from "../Text/TextDefault";
 
-const ButtonOutlineGray = (props: any) => {
+interface ButtonOutlineGrayProps {
+  onPress: () => {};
+  style: Object;
+  title: string;
+}
+
+const ButtonOutlineGray: React.FC<ButtonOutlineGrayProps> = ({
+  onPress,
+  style,
+  title,
+}: ButtonOutlineGrayProps) => {
   return (
-    <TouchableOpacity
-      style={{ ...styles.button, ...props.style }}
-      onPress={props.onPress}
-    >
-      <TextDefault style={styles.editProfileText}>{props.title}</TextDefault>
+    <TouchableOpacity style={{ ...styles.button, ...style }} onPress={onPress}>
+      <TextDefault style={styles.editProfileText}>{title}</TextDefault>
     </TouchableOpacity>
   );
 };

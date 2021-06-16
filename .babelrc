@@ -4,8 +4,10 @@
       "module-resolver",
       {
         "root": ["./"],
+        "extensions": [".js", ".ts"],
         "alias": {
-          "tailwind": "./tailwind.js"
+          "tailwind": "./tailwind.js",
+          "types": "./types.ts"
         }
       }
     ]

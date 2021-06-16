@@ -1,5 +1,4 @@
 // For choosing type of objective (i.e. w/accountability partner or by user himself)
-
 import React, { useState } from "react";
 import {
   View,
@@ -8,17 +7,23 @@ import {
   Keyboard,
   StyleSheet,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { TextInput } from "react-native-paper";
 
+import { HomeNavProps, HomeParamList } from "types";
 import Colors from "../../../constants/Colors";
 import ButtonCard from "../../../components/Buttons/ButtonCard";
 import TextDefault from "../../../components/Text/TextDefault";
 import TextBold from "../../../components/Text/TextBold";
-import TextBlack from "../../../components/Text/TextBlack";
-import ButtonWhite from "../../../components/Buttons/ButtonWhite";
 import CancelObjCreationButton from "../../../components/IconButtons/CancelObjCreationButton";
 
-const Objective1Screen = ({ navigation }: Props) => {
+export interface Objective1Props {
+  navigation: StackNavigationProp<HomeParamList, "Objective1Screen">;
+}
+
+const Objective1Screen: React.FC<Objective1Props> = ({
+  navigation,
+}: HomeNavProps<"Objective1Screen">) => {
   const [objectiveTitle, setObjectiveTitle] = useState("");
   const [warningContainer, setWarningContainer] = useState<JSX.Element>(null);
 

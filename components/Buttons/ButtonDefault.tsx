@@ -4,11 +4,21 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import TextBold from "../Text/TextBold";
 
-const ButtonGradient = (props: any) => {
+interface ButtonDefaultProps {
+  onPress: () => {};
+  style: Object;
+  children: React.ReactNode;
+}
+
+const ButtonDefault: React.FC<ButtonDefaultProps> = ({
+  onPress,
+  style,
+  children,
+}: ButtonDefaultProps) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={{ ...styles.button, ...props.style }}>
-        <TextBold style={styles.buttonText}>{props.children}</TextBold>
+    <TouchableOpacity onPress={onPress}>
+      <View style={{ ...styles.button, ...style }}>
+        <TextBold style={styles.buttonText}>{children}</TextBold>
       </View>
     </TouchableOpacity>
   );
@@ -31,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ButtonGradient;
+export default ButtonDefault;

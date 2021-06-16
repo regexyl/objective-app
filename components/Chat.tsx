@@ -1,7 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
 
-const Chat = () => {
+interface ChatProps {}
+
+const Chat: React.FC<ChatProps> = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {

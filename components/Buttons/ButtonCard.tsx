@@ -5,11 +5,21 @@ import { windowHeight, windowWidth } from "../../src/local/config";
 import Colors from "../../constants/Colors";
 import TextBold from "../Text/TextBold";
 
-const ButtonCard = (props: Props) => {
+interface ButtonCardProps {
+  onPress: () => void;
+  style?: Object;
+  children: React.ReactNode;
+}
+
+const ButtonCard: React.FC<ButtonCardProps> = ({
+  onPress,
+  style,
+  children,
+}: ButtonCardProps) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={{ ...styles.button, ...props.style }}>
-        <TextBold style={styles.buttonText}>{props.children}</TextBold>
+    <TouchableOpacity onPress={onPress}>
+      <View style={{ ...styles.button, ...style }}>
+        <TextBold style={styles.buttonText}>{children}</TextBold>
       </View>
     </TouchableOpacity>
   );

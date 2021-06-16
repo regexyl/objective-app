@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Divider = () => {
+interface DividerProps {}
+
+const Divider: React.FC<DividerProps> = () => {
   return <View style={styles.divider}></View>;
 };
 

@@ -4,15 +4,22 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import TextBold from "../Text/TextBold";
 import Colors from "../../constants/Colors";
 
-const ButtonCustom = (props: any) => {
+interface ButtonCustomProps {
+  onPress: () => {};
+  style: {};
+  textStyle?: Object;
+  children: React.ReactNode;
+}
+
+const ButtonCustom: React.FC<ButtonCustomProps> = ({
+  onPress,
+  style,
+  textStyle,
+  children,
+}: ButtonCustomProps) => {
   return (
-    <TouchableOpacity
-      style={{ ...props.backgroundStyle }}
-      onPress={props.onPress}
-    >
-      <TextBold style={{ ...styles.text, ...props.textStyle }}>
-        {props.children}
-      </TextBold>
+    <TouchableOpacity style={{ ...style }} onPress={onPress}>
+      <TextBold style={{ ...styles.text, ...textStyle }}>{children}</TextBold>
     </TouchableOpacity>
   );
 };

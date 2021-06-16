@@ -4,7 +4,9 @@ import ButtonGradient from "../../components/Buttons/ButtonGradient";
 
 import ObjectiveSummaryCard from "../../components/Cards/ObjectiveSummaryCard";
 
-const ActivityScreen = () => {
+export interface ActivityScreenProps {}
+
+const ActivityScreen: React.FC<ActivityScreenProps> = () => {
   return (
     <View>
       <Text>This is the activity screen.</Text>

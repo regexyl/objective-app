@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import { tailwind } from "tailwind";
 import Svg, { Line } from "react-native-svg";
 
 import Colors from "../constants/Colors";
 import { windowHeight, windowWidth } from "../src/local/config";
+import SubObjective from "models/subObjective";
 
-const Timeline = (props: Props) => {
-  const data = props.data;
-  const objectiveTitle = props.objectiveTitle;
-  const finalDeadline = props.finalDeadline;
+interface TimelineProps {
+  data: SubObjective[];
+  objectiveTitle: string;
+  finalDeadline: string;
+}
 
+const Timeline: React.FC<TimelineProps> = ({
+  data,
+  objectiveTitle,
+  finalDeadline,
+}: TimelineProps) => {
   const [checkLayout, setCheckLayout] = useState(false);
-  const [timelineLayoutHeight, setTimelineLayoutHeight] = useState(0);
+  const [timelineHeight, setTimelineHeight] = useState(0);
 
   // Draw timeline line (i.e. the bar that links the circles together)
   let timelineLine;
   if (checkLayout) {
     timelineLine = (
       <View style={styles.timelineLine}>
-        <Svg height={timelineLayoutHeight} width={10}>
+        <Svg height={timelineHeight} width={10}>
           <Line
             x1="0"
             y1="0"
             x2="0"
-            y2={timelineLayoutHeight}
+            y2={timelineHeight}
             stroke="black"
             strokeWidth="4"
           />
@@ -41,10 +48,10 @@ const Timeline = (props: Props) => {
           if (checkLayout === false) {
             const { height } = event.nativeEvent.layout;
             console.log("height: ", height);
-            timelineHeight = height - windowHeight * 0.05; // timelineHeight = height of curr component - a bit of extra length at the end
-            console.log("timelineLayoutHeight: ", timelineHeight);
+            const tempTimelineHeight = height - windowHeight * 0.05; // timelineHeight = height of curr component - a bit of extra length at the end
+            console.log("timelineLayoutHeight: ", tempTimelineHeight);
             setCheckLayout(true);
-            setTimelineLayoutHeight(timelineHeight);
+            setTimelineHeight(tempTimelineHeight);
           }
         }}
       >

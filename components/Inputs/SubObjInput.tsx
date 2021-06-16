@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Props } from "react";
 import { View, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
@@ -8,7 +8,21 @@ import { windowHeight, windowWidth } from "../../src/local/config";
 import ButtonCustom from "../../components/Buttons/ButtonCustom";
 import InputDate from "../../components/Inputs/InputDate";
 
-const SubObjInput = (props: any) => {
+interface SubObjInputProps {
+  onChangeText: () => {};
+  subTitleValue: string;
+  deadlineValue: string;
+  deadlineOnFocus: () => {};
+  onPress: () => {};
+}
+
+const SubObjInput: React.FC<SubObjInputProps> = ({
+  onChangeText,
+  subTitleValue,
+  deadlineValue,
+  deadlineOnFocus,
+  onPress,
+}: SubObjInputProps) => {
   return (
     <View style={styles.newRow}>
       <View style={styles.finalObjective}>
@@ -17,17 +31,18 @@ const SubObjInput = (props: any) => {
           <TextInput
             style={styles.objectiveTextInput}
             placeholder="Add smaller objectives"
-            onChangeText={props.onChangeText}
-            value={props.subTitleValue}
+            onChangeText={onChangeText}
+            value={subTitleValue}
           />
         </View>
         <View style={styles.deadlineText}>
           <InputDate
-            deadlineValue={props.deadlineValue}
-            deadlineOnFocus={props.deadlineOnFocus}
+            style={{}}
+            deadlineValue={deadlineValue}
+            deadlineOnFocus={deadlineOnFocus}
           />
         </View>
-        <ButtonCustom style={styles.subtractButton} onPress={props.onPress}>
+        <ButtonCustom style={styles.subtractButton} onPress={onPress}>
           <Ionicons
             size={24}
             style={{

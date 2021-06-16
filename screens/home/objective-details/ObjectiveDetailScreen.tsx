@@ -1,18 +1,24 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
-import { SharedElement } from "react-navigation-shared-element";
+import {
+  SharedElement,
+  SharedElementSceneComponent,
+} from "react-navigation-shared-element";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
 import { tailwind } from "tailwind";
 
 import { windowHeight, windowWidth } from "../../../src/local/config";
 import Colors from "../../../constants/Colors";
-import ButtonGradient from "../../../components/Buttons/ButtonGradient";
 import ObjectiveSummaryCard from "../../../components/Cards/ObjectiveSummaryCard";
 import CloseIconButton from "../../../components/IconButtons/CloseIconButton";
+import { HomeNavProps } from "types";
 
-const ObjectiveDetailScreen = ({ navigation, route }: Props) => {
-  const { item } = route.params;
+const ObjectiveDetailScreen: SharedElementSceneComponent = ({
+  navigation,
+  route,
+}: HomeNavProps<"ObjectiveDetailScreen">) => {
+  // const { item } = route.params;
 
   const markObjectiveCompleted = () =>
     Alert.alert(
@@ -168,7 +174,6 @@ ObjectiveDetailScreen.sharedElements = (
   otherNavigation,
   showing
 ) => {
-  //   const { item } = route.params;
   return [
     {
       id: "1",

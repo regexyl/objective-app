@@ -8,6 +8,7 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 import { auth } from "../../src/firebase/config";
 
@@ -18,8 +19,15 @@ import TextBold from "../../components/Text/TextBold";
 import ButtonGradient from "../../components/Buttons/ButtonGradient";
 import ButtonDefault from "../../components/Buttons/ButtonDefault";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { AuthNavProps, AuthParamList } from "types";
 
-const LoginScreen = ({ navigation }: any) => {
+export interface LoginScreenProps {
+  navigation: StackNavigationProp<AuthParamList, "LoginScreen">;
+}
+
+const LoginScreen: React.FC<LoginScreenProps> = ({
+  navigation,
+}: AuthNavProps<"LoginScreen">) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

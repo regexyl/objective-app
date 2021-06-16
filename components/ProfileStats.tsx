@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 
 import Colors from "../constants/Colors";
 import TextDefault from "./Text/TextDefault";
 import TextBold from "./Text/TextBold";
-import ButtonGradient from "./Buttons/ButtonGradient";
-import ButtonDefault from "./Buttons/ButtonDefault";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
-const ProfileStats = (props: any) => {
+interface ProfileStatsProps {
+  title: string;
+  stats: string;
+}
+
+const ProfileStats: React.FC<ProfileStatsProps> = ({
+  title,
+  stats,
+}: ProfileStatsProps) => {
   return (
     <View>
-      <TextBold style={styles.header}>{props.title}</TextBold>
-      <TextDefault style={styles.stats}>{props.stats}</TextDefault>
+      <TextBold style={styles.header}>{title}</TextBold>
+      <TextDefault style={styles.stats}>{stats}</TextDefault>
     </View>
   );
 };

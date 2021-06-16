@@ -8,18 +8,27 @@ import {
   Keyboard,
   StyleSheet,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
 import { TextInput } from "react-native-paper";
 
 import Colors from "../../../constants/Colors";
 import TextDefault from "../../../components/Text/TextDefault";
-import TextBold from "../../../components/Text/TextBold";
-import TextBlack from "../../../components/Text/TextBlack";
 import NoteCard from "../../../components/Cards/NoteCard";
 import WarningCard from "../../../components/Cards/WarningCard";
 import ButtonWhite from "../../../components/Buttons/ButtonWhite";
 import CancelObjCreationButton from "../../../components/IconButtons/CancelObjCreationButton";
+import { HomeNavProps, HomeParamList } from "types";
 
-const Objective3Screen = ({ route, navigation }: Props) => {
+export interface Objective3ScreenProps {
+  navigation: StackNavigationProp<HomeParamList, "Objective3Screen">;
+  route: RouteProp<HomeParamList, "Objective3Screen">;
+}
+
+const Objective3Screen = ({
+  route,
+  navigation,
+}: HomeNavProps<"Objective3Screen">) => {
   const [description, setDescription] = useState("");
   const [numOfChar, setNumOfChar] = useState(150);
 
@@ -53,9 +62,9 @@ const Objective3Screen = ({ route, navigation }: Props) => {
             numberOfLines={4}
             style={styles.input}
             label="Objective description"
-            onChangeText={(description) => {
-              setDescription(description);
-              setNumOfChar(150 - description.length);
+            onChangeText={(changedDescription) => {
+              setDescription(changedDescription);
+              setNumOfChar(150 - changedDescription.length);
             }}
             value={description}
           />

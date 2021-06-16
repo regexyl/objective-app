@@ -1,13 +1,23 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 
-const TextDefault = (props: any) => {
+interface TextDefaultProps {
+  numberOfLines?: number;
+  style?: Object;
+  children: React.ReactNode;
+}
+
+const TextDefault: React.FC<TextDefaultProps> = ({
+  numberOfLines,
+  style,
+  children,
+}: TextDefaultProps) => {
   return (
     <Text
-      numberOfLines={props.numberOfLines || 10}
-      style={{ ...styles.text, ...props.style }}
+      numberOfLines={numberOfLines || 10}
+      style={{ ...styles.text, ...style }}
     >
-      {props.children}
+      {children}
     </Text>
   );
 };

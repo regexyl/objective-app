@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -17,7 +17,7 @@ const theme = {
   },
 };
 
-export default function App() {
+const App: () => ReactNode = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
@@ -39,4 +39,6 @@ export default function App() {
       </PaperProvider>
     );
   }
-}
+};
+
+export default App;

@@ -4,15 +4,21 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import TextBold from "../Text/TextBold";
 
-const ButtonOutline = (props: any) => {
+interface ButtonOutlineProps {
+  onPress: () => void;
+  style?: Object;
+  children: React.ReactNode;
+}
+
+const ButtonOutline: React.FC<ButtonOutlineProps> = ({
+  onPress,
+  style,
+  children,
+}: ButtonOutlineProps) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={{ ...styles.button, ...props.style }}>
-        <TextBold
-          style={{ ...styles.buttonText, fontSize: props.style.fontSize }}
-        >
-          {props.children}
-        </TextBold>
+    <TouchableOpacity onPress={onPress}>
+      <View style={{ ...styles.button, ...style }}>
+        <TextBold style={{ ...styles.buttonText }}>{children}</TextBold>
       </View>
     </TouchableOpacity>
   );

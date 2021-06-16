@@ -4,11 +4,21 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import TextBold from "../Text/TextBold";
 
-const ButtonWhite = (props: any) => {
+interface ButtonWhiteProps {
+  onPress: () => void;
+  style?: Object;
+  children: React.ReactNode;
+}
+
+const ButtonWhite: React.FC<ButtonWhiteProps> = ({
+  onPress,
+  style,
+  children,
+}: ButtonWhiteProps) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={{ ...styles.button, ...props.style }}>
-        <TextBold style={styles.buttonText}>{props.children}</TextBold>
+    <TouchableOpacity onPress={onPress}>
+      <View style={{ ...styles.button, ...style }}>
+        <TextBold style={styles.buttonText}>{children}</TextBold>
       </View>
     </TouchableOpacity>
   );

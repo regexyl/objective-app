@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { tailwind } from "tailwind";
 import LottieView from "lottie-react-native";
 
-import { windowHeight, windowWidth } from "../../../src/local/config";
+import { windowWidth } from "../../../src/local/config";
 import Colors from "../../../constants/Colors";
-import TextDefault from "../../../components/Text/TextDefault";
-import TextBold from "../../../components/Text/TextBold";
 import ButtonCard from "../../../components/Buttons/ButtonCard";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { HomeNavProps, HomeParamList } from "types";
 
-const CreationSuccessScreen = ({ navigation }: Props) => {
+export interface CreactionSuccessScreenProps {
+  navigation: StackNavigationProp<HomeParamList, "CreationSuccessScreen">;
+}
+
+const CreationSuccessScreen: React.FC<CreactionSuccessScreenProps> = ({
+  navigation,
+}: HomeNavProps<"CreationSuccessScreen">) => {
   // Prevent user from returning to previous objective summary page by swiping right
   // Current method isn't the best as user can still see a glimpse of previous page when swiping
   useEffect(
